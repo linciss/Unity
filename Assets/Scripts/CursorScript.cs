@@ -5,20 +5,29 @@ using UnityEngine;
 public class CursorScript : MonoBehaviour
 {
     public Texture2D[] cursors;
-    // Start is called before the first frame update
+    
     void Start()
     {
         defaulCursor();   
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    void defaulCursor()
+    public void defaulCursor()
     {
         Cursor.SetCursor(cursors[0], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void onButton()
+    {
+        Cursor.SetCursor(cursors[1], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void onClick()
+    {
+        Cursor.SetCursor(cursors[2], Vector2.zero, CursorMode.ForceSoftware);
     }
 }
