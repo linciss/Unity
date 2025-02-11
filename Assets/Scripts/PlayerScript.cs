@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
         for(int i =0; i<otherPlayers.Length-1; i++)
         {
             spawnPoint.transform.position += new Vector3(0.2f, 0, 0.2f);
-            index = Random.Range(0, playerPrefabs.Length - 1);
+            index = Random.Range(0, playerPrefabs.Length);
             GameObject character = Instantiate(playerPrefabs[index],
                 spawnPoint.transform.position, Quaternion.identity);
             character.GetComponent<NameScript>().SetPlayerName(

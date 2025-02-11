@@ -18,6 +18,8 @@ public class SaveSettings : MonoBehaviour
 
     [SerializeField] private Slider soundSlider;
     [SerializeField] private GameObject audioObject;
+    [SerializeField] private Toggle fullscreenToggle;
+    private int isFullScreen = 1;
     private AudioSource audioSource;
     private float currVolume;
     void Start()
@@ -25,6 +27,10 @@ public class SaveSettings : MonoBehaviour
         // audio stuff
         audioSource = audioObject.GetComponent<AudioSource>();
         currVolume = PlayerPrefs.GetFloat("volume", audioSource.volume);
+        isFullScreen = PlayerPrefs.GetInt("fullscreen", isFullScreen);
+        fullscreenToggle.isOn = isFullScreen == 1;
+        Screen.fullScreen = isFullScreen == 1;
+
         soundSlider.value = currVolume;
         audioSource.volume = currVolume;
 
@@ -56,7 +62,6 @@ public class SaveSettings : MonoBehaviour
         }
         resIndexToSave = PlayerPrefs.GetInt("resolution", currentResolutionIndex);
         resDropdrown.AddOptions(options);
-        Console.WriteLine(resIndexToSave);
         resDropdrown.value = resIndexToSave;
         resDropdrown.RefreshShownValue();
 
@@ -86,5 +91,20 @@ public class SaveSettings : MonoBehaviour
     {
         PlayerPrefs.SetInt("resolution", resIndexToSave);
         PlayerPrefs.SetFloat("volume", currVolume);
+        PlayerPrefs.SetInt("fullscreen", isFullScreen);
+    }
+
+    public void toggleFullscreen()
+    {
+        if (fullscreenToggle.isOn)
+        {
+            isFullScreen = 1;
+            Screen.fullScreen = true;
+        }
+        else
+        {
+            isFullScreen = 0;
+            Screen.fullScreen = false;
+        }
     }
 }
