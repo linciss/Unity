@@ -1,0 +1,919 @@
+fileFormatVersion: 2
+guid: 3bbc6994b72b8e0479a40ffeb0b1e295
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 55, y: 985, z: 855, w: 203}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 987
+        width: 88
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c889899d1f6f554f8e9e7ffecb9ae8f
+      internalID: 214668912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 987
+        width: 89
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de734c717454334a852ccf2c96d0718
+      internalID: 99086605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 987
+        width: 87
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed4e89134c95474baa0e73767e7aa2c
+      internalID: 1935649505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 987
+        width: 90
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12a55f54d2417f4c80392adbc0b6afd
+      internalID: 1441337184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_4
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 986
+        width: 87
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4daad4d5991c164459c6e00029cc98cc
+      internalID: 1676873006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_5
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 988
+        width: 87
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5897de1e71f843543b2567e2a9d536e5
+      internalID: 2087930643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_6
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 987
+        width: 88
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48669a3db912a44180ebe67ac7a629e
+      internalID: 415540156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_7
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 987
+        width: 88
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0007d104ed8754da3fc1e5084e2895
+      internalID: -2040646753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_8
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 988
+        width: 89
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf39103de20531448894f351ea68c26
+      internalID: -2071804872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_9
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 988
+        width: 89
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a053c1884fc36e45994ca7c2775eaf8
+      internalID: 992076238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_10
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 885
+        width: 88
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 770967f54b965ca45bb37007b95760ba
+      internalID: -1354526763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 887
+        width: 87
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca57e057cbdc1a242accdc787d6ce47b
+      internalID: -325024787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_12
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 888
+        width: 87
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6784373cb26a0f64c831db073f61ee02
+      internalID: 358221130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_13
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 889
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4bd15bcf9be0149a98317801bddbda
+      internalID: -1692582795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_14
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 888
+        width: 87
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ad65c17df3a7244bb9d0a67684eea1
+      internalID: 2056324982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_15
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 888
+        width: 85
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b1e2e9464bb084ca99b75eb61a6b89
+      internalID: -541649253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_16
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 888
+        width: 88
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2123ff42e0531d248ae8512d7b4df832
+      internalID: 1877329083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_17
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 888
+        width: 88
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a77c5ba274d6f54ca370ed3440543cc
+      internalID: -1136871312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 888
+        width: 86
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b66cc388c36194cbf78162fe50a5dd
+      internalID: -1137570787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_19
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 888
+        width: 87
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9fa09b181c198640847dfc6e7933087
+      internalID: -1336276959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_20
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 786
+        width: 88
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29a4db9eadd0c7b4581126cba2feb571
+      internalID: -310790565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_21
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 786
+        width: 89
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b40dd3ea3482224da3561ac21a19f5b
+      internalID: -752757370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_22
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 789
+        width: 88
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e69b6f24913e284da06892e7a6ec2df
+      internalID: 865138008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_23
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 787
+        width: 90
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71f70875ff233b469bf18f0e6954e0c
+      internalID: -1353648637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_24
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 785
+        width: 88
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1854a32e4bb9cf4183484fcee6f970b
+      internalID: 592890001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_25
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 787
+        width: 86
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01d42c5f29d1de40b96f970bb0b912c
+      internalID: -316252480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_26
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 786
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd3a8ecbf35f5842859b199995114ec
+      internalID: 1756063832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_27
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 788
+        width: 88
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2981f87e0668cd419346ba2a165027c
+      internalID: -1200588778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_28
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 787
+        width: 87
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d113a81b81920a14da36d3dd26768cdc
+      internalID: -1035177694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_29
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 786
+        width: 88
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c486d9817a3ad5942a4bec49b48fbe09
+      internalID: -1111251790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 686
+        width: 88
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9fcbf38e97903648aea29bd6818e522
+      internalID: 1759403362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_31
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 686
+        width: 88
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85cd88c2111a05b40b6b559e57c7ac53
+      internalID: -955538988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_32
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 685
+        width: 89
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da01ede4c7397034284428f46665f3d3
+      internalID: -1448172303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_33
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 685
+        width: 89
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ba5ffe11edecd4faee9d3e2077acef
+      internalID: 384732435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_34
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 686
+        width: 88
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f738465a5017c246918a2343ca00b95
+      internalID: -1097579865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: free-printable-numbers-chart-1-to-100-9_35
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 685
+        width: 86
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714d78c32728014479beace3f169e1d1
+      internalID: 1964047349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      free-printable-numbers-chart-1-to-100-9_0: -482627833
+      free-printable-numbers-chart-1-to-100-9_1: 214668912
+      free-printable-numbers-chart-1-to-100-9_10: -2040646753
+      free-printable-numbers-chart-1-to-100-9_11: -2071804872
+      free-printable-numbers-chart-1-to-100-9_12: 992076238
+      free-printable-numbers-chart-1-to-100-9_13: -1354526763
+      free-printable-numbers-chart-1-to-100-9_14: -325024787
+      free-printable-numbers-chart-1-to-100-9_15: 358221130
+      free-printable-numbers-chart-1-to-100-9_16: -1692582795
+      free-printable-numbers-chart-1-to-100-9_17: 2056324982
+      free-printable-numbers-chart-1-to-100-9_18: -541649253
+      free-printable-numbers-chart-1-to-100-9_19: 1877329083
+      free-printable-numbers-chart-1-to-100-9_2: 99086605
+      free-printable-numbers-chart-1-to-100-9_20: -1136871312
+      free-printable-numbers-chart-1-to-100-9_21: -1137570787
+      free-printable-numbers-chart-1-to-100-9_22: -1336276959
+      free-printable-numbers-chart-1-to-100-9_23: -310790565
+      free-printable-numbers-chart-1-to-100-9_24: -752757370
+      free-printable-numbers-chart-1-to-100-9_25: 865138008
+      free-printable-numbers-chart-1-to-100-9_26: -1353648637
+      free-printable-numbers-chart-1-to-100-9_27: 592890001
+      free-printable-numbers-chart-1-to-100-9_28: -316252480
+      free-printable-numbers-chart-1-to-100-9_29: 1756063832
+      free-printable-numbers-chart-1-to-100-9_3: 1935649505
+      free-printable-numbers-chart-1-to-100-9_30: -1200588778
+      free-printable-numbers-chart-1-to-100-9_31: -1035177694
+      free-printable-numbers-chart-1-to-100-9_32: -1111251790
+      free-printable-numbers-chart-1-to-100-9_33: 1759403362
+      free-printable-numbers-chart-1-to-100-9_34: -955538988
+      free-printable-numbers-chart-1-to-100-9_35: -1448172303
+      free-printable-numbers-chart-1-to-100-9_4: -1566911530
+      free-printable-numbers-chart-1-to-100-9_5: 1441337184
+      free-printable-numbers-chart-1-to-100-9_6: 987000609
+      free-printable-numbers-chart-1-to-100-9_7: 1676873006
+      free-printable-numbers-chart-1-to-100-9_8: 2087930643
+      free-printable-numbers-chart-1-to-100-9_9: 415540156
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
