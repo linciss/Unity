@@ -25,7 +25,8 @@ public class DiceRoll : MonoBehaviour
     void Update()
     {
         if (rb == null) return;
-        if (Input.GetMouseButton(0) && isLanded || Input.GetMouseButton(0) && !firstThrow)
+
+        if (Input.GetMouseButton(0) && (isLanded || !firstThrow))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -60,6 +61,7 @@ public class DiceRoll : MonoBehaviour
 
         rb.AddForce(Vector3.up * Random.Range(800, startRollingForce));
         rb.AddTorque(forceX, forceY, forceZ);
+
     }
 
     public void resetDice()

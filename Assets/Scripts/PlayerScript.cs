@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject spawnPoint;
     int[] otherPlayers;
     int index;
+    public GameObject parentObject;
 
     private const string textFileName = "playerNames";
 
@@ -22,6 +23,9 @@ public class PlayerScript : MonoBehaviour
             spawnPoint.transform.position, Quaternion.identity);
         mainCharacter.GetComponent<NameScript>().SetPlayerName(
             PlayerPrefs.GetString("PlayerName"));
+
+        mainCharacter.transform.parent = parentObject.transform;
+
 
         // Vēlāk vēl turpināsim...
         otherPlayers = new int[PlayerPrefs.GetInt("PlayerCount")];
@@ -35,7 +39,8 @@ public class PlayerScript : MonoBehaviour
                 spawnPoint.transform.position, Quaternion.identity);
             character.GetComponent<NameScript>().SetPlayerName(
                 nameArr[Random.Range(0, nameArr.Length - 1)]);
-                    
+
+            character.transform.parent = parentObject.transform;
         }
     }
 

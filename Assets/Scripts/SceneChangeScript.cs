@@ -41,11 +41,22 @@ public class SceneChangeScript : MonoBehaviour
 
             SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
+        else if (string.Equals(command, "main menu", StringComparison.OrdinalIgnoreCase))
+        {
+            yield return fadeScript.FadeIn(0.1f);
+
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
     }
 
     public void goSettings()
     {
         StartCoroutine(Delay("settings", -1, ""));
+    }
+
+    public void goBack()
+    {
+        StartCoroutine(Delay("main menu", -1, ""));
     }
 
 }
