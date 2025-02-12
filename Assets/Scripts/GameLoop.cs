@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameLoop : MonoBehaviour
@@ -13,7 +14,6 @@ public class GameLoop : MonoBehaviour
     private GameObject[] players;
     public List<Transform> waypoints = new List<Transform>();
     private bool isMoving = false;
-    private Vector3 targetPosition;
     private bool hasRolled = false;
     private bool isPlayerTurn = true;
 
@@ -43,10 +43,8 @@ public class GameLoop : MonoBehaviour
             return;
         }
 
-        if (isMoving)
-        {
-            return;
-        }
+        if(isMoving) return;
+
 
         //  for some reaosn this works DO NOT TOUCH IT!~!!!!
         if (isPlayerTurn)
@@ -54,7 +52,8 @@ public class GameLoop : MonoBehaviour
             if (dice.isLanded && !hasRolled)    
             {
                 rolledNumber = Int32.Parse(dice.rolledNumber);
-                
+                Math.Max(1, rolledNumber);
+
                 int prevTile = playerPositions[playerIndex];
                 int total = playerPositions[playerIndex] += rolledNumber;
                 int playerTotal = total;
@@ -67,7 +66,6 @@ public class GameLoop : MonoBehaviour
                 }
 
                 playerPositions[playerIndex] = playerTotal;
-
 
                 StartCoroutine(movePlayer(prevTile, total -1));
 
@@ -88,16 +86,16 @@ public class GameLoop : MonoBehaviour
     }
 
     private IEnumerator movePlayer(int startIndex, int endIndex){
- 
-
         isMoving = true;
         GameObject currentPlayer = players[playerIndex];
         // 8
         int currentWaypointIndex = (startIndex == 0) ? 0 : startIndex - 1;
         
-        // 14 > 11 - 1
-        if (endIndex > waypoints.Count - 1)
-        {
+        if (currentWaypointIndex + 1 > endIndex){
+            yield return StartCoroutine(moveWaypoint(currentPlayer, currentWaypointIndex));
+            playerPositions[playerIndex] = currentWaypointIndex;
+              // 14 > 11 - 1
+        }else if (endIndex > waypoints.Count - 1){
             // 14 - 11 = 3
             int bounce = endIndex - (waypoints.Count - 1);
 
@@ -116,9 +114,8 @@ public class GameLoop : MonoBehaviour
                 currentWaypointIndex = i;
             }
             playerPositions[playerIndex] = currentWaypointIndex + 1;
-        }
-        else
-        {
+        }else{
+            //  0 + 1 
             for (int i = currentWaypointIndex + 1; i <= endIndex; i++)
             {
                 yield return StartCoroutine(moveWaypoint(currentPlayer, i));
@@ -149,26 +146,25 @@ public class GameLoop : MonoBehaviour
         }
     }
 
-    private IEnumerator moveWaypoint(GameObject player, int idx)
-{
-    Vector3 target = new Vector3(
-        waypoints[idx].position.x,
-        0.489f,
-        waypoints[idx].position.z
-    );
-    
-    while (Vector3.Distance(player.transform.position, target) > 0.01f)
-    {
-        player.transform.position = Vector3.MoveTowards(
-            player.transform.position,
-            target,
-            Time.deltaTime * 3
+    private IEnumerator moveWaypoint(GameObject player, int idx){
+        Vector3 target = new Vector3(
+            waypoints[idx].position.x,
+            0.489f,
+            waypoints[idx].position.z
         );
+        
+        while (Vector3.Distance(player.transform.position, target) > 0.01f)
+        {
+            player.transform.position = Vector3.MoveTowards(
+                player.transform.position,
+                target,
+                Time.deltaTime * 3
+            );
+            yield return null;
+        }
+        
+        player.transform.position = target;
         yield return null;
     }
-    
-    player.transform.position = target;
-    yield return null;
-}
 
 }
