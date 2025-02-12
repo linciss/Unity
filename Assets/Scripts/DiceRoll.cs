@@ -70,6 +70,7 @@ public class DiceRoll : MonoBehaviour
         firstThrow = false;
         isLanded = false;
         transform.position = pos;
+        rolledNumber = "";
     }
 
 }
