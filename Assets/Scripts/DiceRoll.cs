@@ -15,6 +15,8 @@ public class DiceRoll : MonoBehaviour
     public bool isLanded = false; 
     private bool firstThrow = false;
 
+    public int timesThrown = 0;
+
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class DiceRoll : MonoBehaviour
                 if(hit.collider != null && hit.collider.gameObject == this.gameObject) {
                     if (!firstThrow)
                         firstThrow = true;
-
+                    timesThrown++;
                     rollDice();
                 }
             }
