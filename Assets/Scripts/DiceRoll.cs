@@ -72,6 +72,7 @@ public class DiceRoll : MonoBehaviour
         firstThrow = false;
         isLanded = false;
         transform.position = pos;
+        transform.rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0);
         rolledNumber = "";
     }
 
