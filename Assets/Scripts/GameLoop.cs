@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class GameLoop : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject[] tiles;
     private int playerIndex = 0;
     private DiceRoll dice;
@@ -17,7 +14,10 @@ public class GameLoop : MonoBehaviour
     public List<Transform> waypoints = new List<Transform>();
     private bool isMoving = false;
     private Vector3 targetPosition;
-    private bool playerRolled = true;
+    private bool hasRolled = false;
+    private bool isPlayerTurn = true;
+
+    Dictionary<int, int> playerPositions = new Dictionary<int, int>();
 
     void Start()
     {
@@ -25,19 +25,18 @@ public class GameLoop : MonoBehaviour
         var childrenCount = playerObject.transform.childCount;
         players = new GameObject[childrenCount];
 
-        for(int i=0; i<childrenCount; i++)
+        for (int i = 0; i < childrenCount; i++)
         {
             players[i] = playerObject.transform.GetChild(i).gameObject;
+            playerPositions.Add(i, 0);
         }
 
         dice = FindObjectOfType<DiceRoll>();
-
+    
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (dice == null)
         {
             Debug.LogError("DiceRoll not found!");
@@ -46,69 +45,130 @@ public class GameLoop : MonoBehaviour
 
         if (isMoving)
         {
-            movePlayer();
-            return; 
-        }
-
-        if (dice.isLanded)
-        {
-            rolledNumber = Int32.Parse(dice.rolledNumber)-1;
-            Debug.Log("Player rolled: " + rolledNumber);
-
-            targetPosition = new Vector3(
-                waypoints[rolledNumber].position.x,
-                0.489f,  
-                waypoints[rolledNumber].position.z
-            );
-
-            isMoving = true;
-        }
-
-        if (!isMoving && dice.isLanded)
-        {
-            nextPlayerTurn();
-        }
-    }
-
-    private void movePlayer()
-    {
-        GameObject currentPlayer = players[playerIndex];
-
-
-        playerIndex++;
-        if (playerIndex >= players.Length)
-        {
-            playerIndex = 0;
-        }
-
-        if (playerIndex == 0) playerRolled = true;
-
-        if (currentPlayer.transform.position == targetPosition && playerRolled)
-        {
-            isMoving = false;
-            playerRolled = false;
-            nextPlayerTurn();
             return;
         }
-        currentPlayer.transform.position = Vector3.MoveTowards(currentPlayer.transform.position, targetPosition, Time.deltaTime * 3);
-    }
-    private void nextPlayerTurn()
-    {
-       // playerIndex = (playerIndex + 1) % players.Length;
 
-        if (playerIndex != 0)
+        //  for some reaosn this works DO NOT TOUCH IT!~!!!!
+        if (isPlayerTurn)
         {
-            rolledNumber = UnityEngine.Random.Range(1, 7); 
-            Debug.Log("Computer player rolled: " + rolledNumber);
+            if (dice.isLanded && !hasRolled)    
+            {
+                rolledNumber = Int32.Parse(dice.rolledNumber);
+                
+                int prevTile = playerPositions[playerIndex];
+                int total = playerPositions[playerIndex] += rolledNumber;
+                int playerTotal = total;
+               
+                if(total > waypoints.Count){
+                    var diff = total - waypoints.Count;
+                    playerTotal = waypoints.Count - diff;
+                }else{
+                    playerTotal = playerPositions[playerIndex];
+                }
 
-            targetPosition = new Vector3(
-                waypoints[rolledNumber].position.x,
-                0.489f, 
-                waypoints[rolledNumber].position.z
-            );
+                playerPositions[playerIndex] = playerTotal;
 
-            isMoving = true;
+
+                StartCoroutine(movePlayer(prevTile, total -1));
+
+                isMoving = true;
+                hasRolled = true;
+
+                dice.resetDice();
+            }
+        }
+        else
+        {
+            if (!hasRolled)
+            {
+                dice.rollDice();
+                isPlayerTurn = true;
+            }
+        }
+    }
+
+    private IEnumerator movePlayer(int startIndex, int endIndex){
+ 
+
+        isMoving = true;
+        GameObject currentPlayer = players[playerIndex];
+        // 8
+        int currentWaypointIndex = (startIndex == 0) ? 0 : startIndex - 1;
+        
+        // 14 > 11 - 1
+        if (endIndex > waypoints.Count - 1)
+        {
+            // 14 - 11 = 3
+            int bounce = endIndex - (waypoints.Count - 1);
+
+            // 8 + 1
+            for (int i = currentWaypointIndex + 1; i < waypoints.Count; i++)
+            {
+                yield return StartCoroutine(moveWaypoint(currentPlayer, i));
+                currentWaypointIndex = i;
+            }
+            // (11- 1) - 3 = 7
+            int bounceTarget = (waypoints.Count - 1) - bounce;
+            // 10 - 1  9>=7 
+            for (int i = (waypoints.Count - 1) - 1; i >= bounceTarget; i--)
+            {
+                yield return StartCoroutine(moveWaypoint(currentPlayer, i));
+                currentWaypointIndex = i;
+            }
+            playerPositions[playerIndex] = currentWaypointIndex + 1;
+        }
+        else
+        {
+            for (int i = currentWaypointIndex + 1; i <= endIndex; i++)
+            {
+                yield return StartCoroutine(moveWaypoint(currentPlayer, i));
+                currentWaypointIndex = i;
+            }
+            playerPositions[playerIndex] = currentWaypointIndex + 1;
         }
 
+
+        currentPlayer.transform.position = new Vector3(
+            waypoints[currentWaypointIndex].position.x,
+            0.489f,
+            waypoints[currentWaypointIndex].position.z
+        );
+
+        isMoving = false;
+        hasRolled = false;
+
+        if (playerIndex == 0)
+        {
+            isPlayerTurn = false;
+            playerIndex = 1;
+        }
+        else
+        {
+            isPlayerTurn = true;
+            playerIndex = 0;
+        }
     }
+
+    private IEnumerator moveWaypoint(GameObject player, int idx)
+{
+    Vector3 target = new Vector3(
+        waypoints[idx].position.x,
+        0.489f,
+        waypoints[idx].position.z
+    );
+    
+    while (Vector3.Distance(player.transform.position, target) > 0.01f)
+    {
+        player.transform.position = Vector3.MoveTowards(
+            player.transform.position,
+            target,
+            Time.deltaTime * 3
+        );
+        yield return null;
+    }
+    
+    player.transform.position = target;
+    yield return null;
+}
+
 }
