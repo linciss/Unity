@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,13 @@ public class GameLoop : MonoBehaviour
     private bool isMoving = false;
     private bool hasRolled = false;
     private bool isPlayerTurn = true;
+    private int[] badFields = {19, 32, 11};
+    private int[] goodFields = {8, 14, 15};
+
+
+    // good fields 19   32   11
+                // to   
+    // bad fields 8,    14  15
 
     Dictionary<int, int> playerPositions = new Dictionary<int, int>();
 
@@ -88,9 +96,12 @@ public class GameLoop : MonoBehaviour
     private IEnumerator movePlayer(int startIndex, int endIndex){
         isMoving = true;
         GameObject currentPlayer = players[playerIndex];
-        // 8
+
         int currentWaypointIndex = (startIndex == 0) ? 0 : startIndex - 1;
-        
+
+
+
+        // 8
         if (currentWaypointIndex + 1 > endIndex){
             yield return StartCoroutine(moveWaypoint(currentPlayer, currentWaypointIndex));
             playerPositions[playerIndex] = currentWaypointIndex;
@@ -121,7 +132,23 @@ public class GameLoop : MonoBehaviour
                 yield return StartCoroutine(moveWaypoint(currentPlayer, i));
                 currentWaypointIndex = i;
             }
-            playerPositions[playerIndex] = currentWaypointIndex + 1;
+
+            if(goodFields.Contains<int>(endIndex+1)){
+                int goodFieldIndex = Array.IndexOf(goodFields, endIndex + 1);
+                int badFieldIndex  = badFields[goodFieldIndex];
+
+                yield return StartCoroutine(moveWaypoint(currentPlayer, badFieldIndex - 1));
+                playerPositions[playerIndex] = badFieldIndex;
+                currentWaypointIndex = badFieldIndex - 1;
+            
+            }else if(badFields.Contains<int>(endIndex+1)){
+                int badFieldIndex = Array.IndexOf(badFields, endIndex + 1);
+                int goodFieldIndex  = goodFields[badFieldIndex];
+                yield return StartCoroutine(moveWaypoint(currentPlayer, goodFieldIndex - 1));
+                playerPositions[playerIndex] = goodFieldIndex;
+                currentWaypointIndex = goodFieldIndex - 1;
+
+            }
         }
 
 
