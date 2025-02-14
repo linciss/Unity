@@ -18,7 +18,7 @@ public class GameLoop : MonoBehaviour
     private bool hasRolled = false;
     private bool isPlayerTurn = true;
     private int[] badFields = {19, 32, 11};
-    private int[] goodFields = {8, 14, 15};
+    private int[] goodFields = {7, 14, 15};
 
 
     // good fields 19   32   11
