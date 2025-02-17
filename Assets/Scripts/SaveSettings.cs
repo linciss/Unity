@@ -25,7 +25,7 @@ public class SaveSettings : MonoBehaviour
     void Start()
     {
         // audio stuff
-        audioSource = audioObject.GetComponent<AudioSource>();
+        audioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
         currVolume = PlayerPrefs.GetFloat("volume", audioSource.volume);
         isFullScreen = PlayerPrefs.GetInt("fullscreen", isFullScreen);
         fullscreenToggle.isOn = isFullScreen == 1;
