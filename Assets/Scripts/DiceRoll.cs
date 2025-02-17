@@ -16,11 +16,13 @@ public class DiceRoll : MonoBehaviour
     private bool firstThrow = false;
 
     public int timesThrown = 0;
+    private GameLoop gameLoop;
 
 
     void Start()
     {
         Initialize();
+        gameLoop = FindObjectOfType<GameLoop>();
     }
 
     // Update is called once per frame
@@ -28,8 +30,7 @@ public class DiceRoll : MonoBehaviour
     {
         if (rb == null) return;
 
-        if (Input.GetMouseButton(0) && (isLanded || !firstThrow))
-        {
+        if ((Input.GetMouseButton(0) && (isLanded || !firstThrow)) && !gameLoop.isAITurn){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit))
@@ -38,6 +39,7 @@ public class DiceRoll : MonoBehaviour
                     if (!firstThrow)
                         firstThrow = true;
                     timesThrown++;
+                    Debug.Log("git lol");
                     rollDice();
                 }
             }
@@ -63,6 +65,7 @@ public class DiceRoll : MonoBehaviour
 
         rb.AddForce(Vector3.up * Random.Range(800, startRollingForce));
         rb.AddTorque(forceX, forceY, forceZ);
+
 
     }
 
