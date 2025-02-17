@@ -39,7 +39,6 @@ public class DiceRoll : MonoBehaviour
                     if (!firstThrow)
                         firstThrow = true;
                     timesThrown++;
-                    Debug.Log("git lol");
                     rollDice();
                 }
             }
