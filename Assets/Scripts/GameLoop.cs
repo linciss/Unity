@@ -17,8 +17,8 @@ public class GameLoop : MonoBehaviour
     private bool isMoving = false;
     private bool hasRolled = false;
     private bool isPlayerTurn = true;
-    private int[] badFields = {19, 32, 11};
-    private int[] goodFields = {7, 14, 15};
+    private int[] badFields = {19, 32, 11}; //19, 32, 11
+    private int[] goodFields = {7, 14, 15};// 7, 14, 15
 
 
     // good fields 19   32   11
@@ -26,6 +26,11 @@ public class GameLoop : MonoBehaviour
     // bad fields 8,    14  15
 
     Dictionary<int, int> playerPositions = new Dictionary<int, int>();
+    public bool gameWon = false;
+    private List<int> aiWon = new List<int>();
+    public bool isAITurn = false;
+
+
 
     void Start()
     {
@@ -45,6 +50,10 @@ public class GameLoop : MonoBehaviour
 
     void Update()
     {
+        if(gameWon == true){
+            return;
+        }
+
         if (dice == null)
         {
             Debug.LogError("DiceRoll not found!");
@@ -54,11 +63,13 @@ public class GameLoop : MonoBehaviour
         if(isMoving) return;
 
 
-        //  for some reaosn this works DO NOT TOUCH IT!~!!!!
-        if (isPlayerTurn)
-        {
-            if (dice.isLanded && !hasRolled)    
-            {
+        if (isPlayerTurn){
+            if (dice.isLanded && !hasRolled){
+                if(((playerIndex + 1) % players.Length+1) != 0) {
+                    isAITurn = true;
+                }else{
+                    isAITurn = false;
+                }; 
                 rolledNumber = Int32.Parse(dice.rolledNumber);
                 Math.Max(1, rolledNumber);
 
@@ -82,18 +93,39 @@ public class GameLoop : MonoBehaviour
 
                 dice.resetDice();
             }
-        }
-        else
-        {
+        }else{
             if (!hasRolled)
             {
-                dice.rollDice();
+                if(!aiWon.Contains(playerIndex)){
+                    dice.rollDice();   
+                }else{
+                    playerIndex = (playerIndex + 1) % players.Length;
+                    if(playerIndex == 0) isAITurn = false;
+                }
+
                 isPlayerTurn = true;
             }
         }
     }
 
     private IEnumerator movePlayer(int startIndex, int endIndex){
+        // extra checks just in case
+        if(aiWon.Contains(playerIndex)){
+            isMoving = false;
+            hasRolled = false;
+
+            if (playerIndex == 0){
+                isPlayerTurn = false;
+                playerIndex = 1;
+                isAITurn = true;
+            }else{
+                isPlayerTurn = true;
+                playerIndex = 0;
+                isAITurn = false;
+            }
+            yield break;
+        }
+
         isMoving = true;
         GameObject currentPlayer = players[playerIndex];
 
@@ -125,6 +157,7 @@ public class GameLoop : MonoBehaviour
                 currentWaypointIndex = i;
             }
             playerPositions[playerIndex] = currentWaypointIndex + 1;
+            endIndex = currentWaypointIndex;
         }else{
             //  0 + 1 
             for (int i = currentWaypointIndex + 1; i <= endIndex; i++)
@@ -132,25 +165,23 @@ public class GameLoop : MonoBehaviour
                 yield return StartCoroutine(moveWaypoint(currentPlayer, i));
                 currentWaypointIndex = i;
             }
-
-            if(goodFields.Contains<int>(endIndex+1)){
-                int goodFieldIndex = Array.IndexOf(goodFields, endIndex + 1);
-                int badFieldIndex  = badFields[goodFieldIndex];
-
-                yield return StartCoroutine(moveWaypoint(currentPlayer, badFieldIndex - 1));
-                playerPositions[playerIndex] = badFieldIndex;
-                currentWaypointIndex = badFieldIndex - 1;
-            
-            }else if(badFields.Contains<int>(endIndex+1)){
-                int badFieldIndex = Array.IndexOf(badFields, endIndex + 1);
-                int goodFieldIndex  = goodFields[badFieldIndex];
-                yield return StartCoroutine(moveWaypoint(currentPlayer, goodFieldIndex - 1));
-                playerPositions[playerIndex] = goodFieldIndex;
-                currentWaypointIndex = goodFieldIndex - 1;
-
-            }
         }
 
+        if(goodFields.Contains<int>(endIndex+1)){
+            int goodFieldIndex = Array.IndexOf(goodFields, endIndex + 1);
+            int badFieldIndex  = badFields[goodFieldIndex];
+
+            yield return StartCoroutine(moveWaypoint(currentPlayer, badFieldIndex - 1));
+            playerPositions[playerIndex] = badFieldIndex;
+            currentWaypointIndex = badFieldIndex - 1;
+    
+        }else if(badFields.Contains<int>(endIndex+1)){
+            int badFieldIndex = Array.IndexOf(badFields, endIndex + 1);
+            int goodFieldIndex  = goodFields[badFieldIndex];
+            yield return StartCoroutine(moveWaypoint(currentPlayer, goodFieldIndex - 1));
+            playerPositions[playerIndex] = goodFieldIndex;
+            currentWaypointIndex = goodFieldIndex - 1;
+        }
 
         currentPlayer.transform.position = new Vector3(
             waypoints[currentWaypointIndex].position.x,
@@ -161,16 +192,26 @@ public class GameLoop : MonoBehaviour
         isMoving = false;
         hasRolled = false;
 
-        if (playerIndex == 0)
-        {
+        if(playerPositions[playerIndex] == waypoints.Count){
+            Debug.Log("Player " + playerIndex + " won!");
+            if(playerIndex == 0){
+                gameWon = true;
+            }else{
+                if(!aiWon.Contains(playerIndex) && playerIndex != 0)aiWon.Add(playerIndex);
+            }
+        }
+
+        if (playerIndex == 0){
             isPlayerTurn = false;
             playerIndex = 1;
-        }
-        else
-        {
+            isAITurn = true;
+        }else{
             isPlayerTurn = true;
             playerIndex = 0;
+            isAITurn = false;
         }
+
+
     }
 
     private IEnumerator moveWaypoint(GameObject player, int idx){
