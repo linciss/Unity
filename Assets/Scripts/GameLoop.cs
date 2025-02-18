@@ -270,7 +270,17 @@ public class GameLoop : MonoBehaviour
             File.WriteAllText(filePath, newJson);
 
         }else{
-            Debug.LogError("File not found");
+            LeaderboardWrapper leaderboardData = new LeaderboardWrapper();
+            LeaderboardEntry newEntry = new LeaderboardEntry();
+            newEntry.name = PlayerPrefs.GetString("PlayerName");
+            newEntry.score = dice.timesThrown;
+            newEntry.time = (int)time;
+
+            leaderboardData.leaderboard = new List<LeaderboardEntry>();
+            leaderboardData.leaderboard.Add(newEntry);
+
+            string newJson = JsonUtility.ToJson(leaderboardData);
+            File.WriteAllText(filePath, newJson);
         }
 
     }
