@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class GameLoop : MonoBehaviour
     public bool gameWon = false;
     private List<int> aiWon = new List<int>();
     public bool isAITurn = false;
+    float time = 0.0f;
 
 
 
@@ -59,6 +61,8 @@ public class GameLoop : MonoBehaviour
             Debug.LogError("DiceRoll not found!");
             return;
         }
+
+        time += Time.deltaTime;
 
         if(isMoving) return;
 
@@ -196,8 +200,9 @@ public class GameLoop : MonoBehaviour
             Debug.Log("Player " + playerIndex + " won!");
             if(playerIndex == 0){
                 gameWon = true;
+                saveScore();
             }else{
-                if(!aiWon.Contains(playerIndex) && playerIndex != 0)aiWon.Add(playerIndex);
+                if(!aiWon.Contains(playerIndex))aiWon.Add(playerIndex);
             }
         }
 
@@ -233,6 +238,41 @@ public class GameLoop : MonoBehaviour
         
         player.transform.position = target;
         yield return null;
+    }
+
+    [Serializable]
+    public class LeaderboardEntry{
+        public string name;
+        public int score;
+        public float time;
+    }
+
+    [Serializable]
+    public class LeaderboardWrapper{
+        public List<LeaderboardEntry> leaderboard;
+    }
+
+    private void saveScore(){
+        string leaderboardFile = "leaderboard.json";
+        string filePath = Application.persistentDataPath + "/" + leaderboardFile;
+
+        if (File.Exists(filePath)){
+            string json = File.ReadAllText(filePath);
+            LeaderboardWrapper leaderboardData = JsonUtility.FromJson<LeaderboardWrapper>(json);
+
+            LeaderboardEntry newEntry = new LeaderboardEntry();
+            newEntry.name = PlayerPrefs.GetString("PlayerName");
+            newEntry.score = dice.timesThrown;
+            newEntry.time = (int)time;
+
+            leaderboardData.leaderboard.Add(newEntry);
+            string newJson = JsonUtility.ToJson(leaderboardData);
+            File.WriteAllText(filePath, newJson);
+
+        }else{
+            Debug.LogError("File not found");
+        }
+
     }
 
 }
