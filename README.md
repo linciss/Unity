@@ -13,7 +13,7 @@ Unity 2.5D Circus game project
 - [x] leaderboard (name, count, time) how many time dice was thrown 
 - [x] game logic with movement (waypoints or pathfinding)
 - [x] pause menu
-- [ ] game won screen
+- [x] game won screen
 - [ ] movement with animations
 - [ ] all 7 chars
 - [ ] menu polishing stuff

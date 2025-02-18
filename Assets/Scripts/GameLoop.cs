@@ -34,6 +34,9 @@ public class GameLoop : MonoBehaviour
 
     public bool gamePaused = false;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject wonMenu;
+    [SerializeField] private TMPro.TextMeshProUGUI rolls;
+    [SerializeField] private TMPro.TextMeshProUGUI timeToWin;
 
 
 
@@ -218,6 +221,9 @@ public class GameLoop : MonoBehaviour
             if (playerIndex == 0){
                 gameWon = true;
                 saveScore();
+                timeToWin.text = "Time: " + (int)time + " seconds";
+                rolls.text = "Times rolled: " + dice.timesThrown;
+                wonMenu.SetActive(true);
             }
             else{
                 if (!aiWon.Contains(playerIndex) && playerIndex != 0)
