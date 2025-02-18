@@ -154,6 +154,7 @@ public class GameLoop : MonoBehaviour
 
         GameObject currentPlayer = players[playerIndex];
 
+
         int currentWaypointIndex = (startIndex == 0) ? 0 : startIndex - 1;
 
 
@@ -252,6 +253,10 @@ public class GameLoop : MonoBehaviour
     }
 
     private IEnumerator moveWaypoint(GameObject player, int idx){
+
+        players[playerIndex].GetComponent<Animator>().SetFloat("speed", 1f);
+
+
         Vector3 target = new Vector3(
             waypoints[idx].position.x,
             0.489f,
@@ -266,8 +271,9 @@ public class GameLoop : MonoBehaviour
                 Time.deltaTime * 3
             );
             yield return null;
+
         }
-        
+        players[playerIndex].GetComponent<Animator>().SetFloat("speed", 0f);
         player.transform.position = target;
         yield return null;
     }
