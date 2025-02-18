@@ -6604,10 +6604,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SetActiveScript, Assembly-CSharp
-          m_MethodName: ToggleActiveAfterDelay
-          m_Mode: 4
+        - m_Target: {fileID: 1776262158}
+          m_TargetAssemblyTypeName: GameLoop, Assembly-CSharp
+          m_MethodName: continueGame
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15918,6 +15918,8 @@ MonoBehaviour:
   - {fileID: 785813914}
   gameWon: 0
   isAITurn: 0
+  gamePaused: 0
+  pauseMenu: {fileID: 1906558865}
 --- !u!114 &1776262159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17267,7 +17269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1906558866
 MonoBehaviour:
   m_ObjectHideFlags: 0
