@@ -10,9 +10,12 @@ Unity 2.5D Circus game project
 - [x] Create character selection screen
 - [x] Create settings menue
 - [x] Create second scene
-- [ ] leaderboard (name, count, time) how many time dice was thrown 
-- [ ] game logic with movement (waypoints or pathfinding)
+- [x] leaderboard (name, count, time) how many time dice was thrown 
+- [x] game logic with movement (waypoints or pathfinding)
+- [x] pause menu
+- [ ] game won screen
 - [ ] movement with animations
-- [ ] pause menu 
+- [ ] all 7 chars
+- [ ] menu polishing stuff
 
 ...
