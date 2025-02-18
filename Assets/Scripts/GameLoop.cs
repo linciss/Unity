@@ -32,6 +32,9 @@ public class GameLoop : MonoBehaviour
     public bool isAITurn = false;
     float time = 0.0f;
 
+    public bool gamePaused = false;
+    [SerializeField] private GameObject pauseMenu;
+
 
 
     void Start()
@@ -61,6 +64,13 @@ public class GameLoop : MonoBehaviour
             Debug.LogError("DiceRoll not found!");
             return;
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            gamePaused = !gamePaused;
+            pauseMenu.SetActive(gamePaused);
+        }
+
+        if(gamePaused) return;
 
         time += Time.deltaTime;
 
@@ -240,6 +250,8 @@ public class GameLoop : MonoBehaviour
         yield return null;
     }
 
+
+
     [Serializable]
     public class LeaderboardEntry{
         public string name;
@@ -285,4 +297,8 @@ public class GameLoop : MonoBehaviour
 
     }
 
+    public void continueGame(){
+        gamePaused = false;
+        pauseMenu.SetActive(false);
+    }
 }
