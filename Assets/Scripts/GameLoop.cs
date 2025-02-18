@@ -55,6 +55,7 @@ public class GameLoop : MonoBehaviour
 
     void Update()
     {
+
         if(gameWon == true){
             return;
         }
@@ -77,6 +78,7 @@ public class GameLoop : MonoBehaviour
         if(isMoving) return;
 
 
+
         if (isPlayerTurn){
             if (dice.isLanded && !hasRolled){
                 if(((playerIndex + 1) % players.Length+1) != 0) {
@@ -86,6 +88,7 @@ public class GameLoop : MonoBehaviour
                 }; 
                 rolledNumber = Int32.Parse(dice.rolledNumber);
                 Math.Max(1, rolledNumber);
+
 
                 int prevTile = playerPositions[playerIndex];
                 int total = playerPositions[playerIndex] += rolledNumber;
@@ -110,37 +113,42 @@ public class GameLoop : MonoBehaviour
         }else{
             if (!hasRolled)
             {
-                if(!aiWon.Contains(playerIndex)){
-                    dice.rollDice();   
+                if (!aiWon.Contains(playerIndex)){
+                    dice.rollDice();
                 }else{
                     playerIndex = (playerIndex + 1) % players.Length;
-                    if(playerIndex == 0) isAITurn = false;
+                    if (playerIndex == 0) { 
+                        isAITurn = false;
+                    }
+                    else if(!aiWon.Contains(playerIndex)){
+                        dice.rollDice();
+                    }
                 }
-
                 isPlayerTurn = true;
             }
         }
     }
 
     private IEnumerator movePlayer(int startIndex, int endIndex){
+        isMoving = true;
+
         // extra checks just in case
-        if(aiWon.Contains(playerIndex)){
+
+        if (aiWon.Contains(playerIndex)){
             isMoving = false;
             hasRolled = false;
 
+            isAITurn = true;
+            playerIndex = (playerIndex + 1) % players.Length;
+            isPlayerTurn = false;
             if (playerIndex == 0){
-                isPlayerTurn = false;
-                playerIndex = 1;
-                isAITurn = true;
-            }else{
-                isPlayerTurn = true;
-                playerIndex = 0;
                 isAITurn = false;
+                isPlayerTurn = true;
             }
+
             yield break;
         }
 
-        isMoving = true;
         GameObject currentPlayer = players[playerIndex];
 
         int currentWaypointIndex = (startIndex == 0) ? 0 : startIndex - 1;
@@ -205,25 +213,33 @@ public class GameLoop : MonoBehaviour
 
         isMoving = false;
         hasRolled = false;
-
-        if(playerPositions[playerIndex] == waypoints.Count){
-            Debug.Log("Player " + playerIndex + " won!");
-            if(playerIndex == 0){
+        // 
+        if (playerPositions[playerIndex] == waypoints.Count){
+            if (playerIndex == 0){
                 gameWon = true;
                 saveScore();
-            }else{
-                if(!aiWon.Contains(playerIndex))aiWon.Add(playerIndex);
+            }
+            else{
+                if (!aiWon.Contains(playerIndex) && playerIndex != 0)
+                {
+                    aiWon.Add(playerIndex);
+                }
             }
         }
 
-        if (playerIndex == 0){
+        if (playerIndex == 0 && aiWon.Count != (players.Count() - 1)){
             isPlayerTurn = false;
-            playerIndex = 1;
+            playerIndex = (playerIndex + 1) % players.Length;
             isAITurn = true;
         }else{
-            isPlayerTurn = true;
-            playerIndex = 0;
-            isAITurn = false;
+            isAITurn = true;
+            isPlayerTurn = false;
+            if(aiWon.Count != (players.Count() - 1))
+                playerIndex = (playerIndex + 1) % players.Length;
+            if (playerIndex == 0){
+                isAITurn = false;
+                isPlayerTurn = true;
+            }
         }
 
 

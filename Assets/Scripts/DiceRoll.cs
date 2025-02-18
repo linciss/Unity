@@ -19,6 +19,7 @@ public class DiceRoll : MonoBehaviour
     private GameLoop gameLoop;
 
 
+
     void Start()
     {
         Initialize();
@@ -30,7 +31,7 @@ public class DiceRoll : MonoBehaviour
     {
         if (rb == null) return;
 
-        if ((Input.GetMouseButton(0) && (isLanded || !firstThrow)) && !gameLoop.isAITurn){
+        if ((Input.GetMouseButton(0) && (isLanded || !firstThrow)) && !gameLoop.isAITurn && !gameLoop.gamePaused){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit))
