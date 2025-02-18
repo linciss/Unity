@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -46,7 +47,12 @@ public class Leaderboard : MonoBehaviour
             string json = File.ReadAllText(filePath);
             leaderboardData = JsonUtility.FromJson<LeaderboardWrapper>(json);
 
-            foreach (LeaderboardEntry entry in leaderboardData.leaderboard)
+            // leaderboardData.leaderboard.Sort((x, y) => y.score.CompareTo(x.score));
+            var sortedLeaderboard = leaderboardData.leaderboard.OrderBy(x => x.score).ToArray();
+
+            var podium = 0;
+
+            foreach (LeaderboardEntry entry in sortedLeaderboard)
             {
                 GameObject item = Instantiate(original);
 
@@ -61,10 +67,31 @@ public class Leaderboard : MonoBehaviour
                 TMPro.TextMeshProUGUI time = item.transform.GetChild(2).gameObject.GetComponent<TMPro.TextMeshProUGUI>();
                 time.text = entry.time.ToString();
 
+                switch (podium)
+                {
+                    case 0:
+                        name.color = new Color32(255, 215, 0, 255);
+                        rolls.color = new Color32(255, 215, 0, 255);
+                        time.color = new Color32(255, 215, 0, 255);
+                        podium++;
+                        break;
+                    case 1:
+                        name.color = new Color32(192, 192, 192, 255);
+                        rolls.color =new Color32(192, 192, 192, 255);
+                        time.color = new Color32(192, 192, 192, 255);
+                        podium++;
+                        break;
+                    case 2:
+                        name.color = new Color32(205, 127, 50, 255);
+                        rolls.color = new Color32(205, 127, 50, 255);
+                        time.color = new Color32(205, 127, 50, 255);
+                        podium++;
+                        break;
+                }
+
                 item.SetActive(true);
                 item.transform.SetParent(content, false);
 
-                Debug.Log("Name: " + entry.name + ", Score: " + entry.score + ", Time: " + entry.time);
             }
         }
         else
