@@ -21,10 +21,10 @@ public class NumberDetection : MonoBehaviour
     private void OnTriggerStay(Collider sideCollider)
     {
         if (diceRoll == null) Debug.LogError("Not found");
-        if (diceRoll.GetComponent<Rigidbody>().velocity == Vector3.zero)
-        {
+        if (diceRoll.GetComponent<Rigidbody>().velocity == Vector3.zero){
             diceRoll.isLanded = true;
             diceRoll.rolledNumber = sideCollider.name;
+            diceRoll.rolledNumberUI = sideCollider.name;
         }
         else
         {

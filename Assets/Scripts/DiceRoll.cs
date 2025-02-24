@@ -12,6 +12,7 @@ public class DiceRoll : MonoBehaviour
     [SerializeField] private float maxForce, startRollingForce; 
     private float forceX, forceY, forceZ;
     public string rolledNumber;
+    public string rolledNumberUI;
     public bool isLanded = false; 
     private bool firstThrow = false;
 

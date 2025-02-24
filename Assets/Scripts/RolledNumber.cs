@@ -20,7 +20,7 @@ public class RolledNumber : MonoBehaviour
 
         if (diceRoll.isLanded)
         {
-            rolledNumberText.text = diceRoll.rolledNumber;
+            rolledNumberText.text = diceRoll.rolledNumberUI;
         }
         else
         {
