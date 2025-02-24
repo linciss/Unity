@@ -248,13 +248,18 @@ public class GameLoop : MonoBehaviour
                 isPlayerTurn = true;
             }
         }
-
-
     }
 
     private IEnumerator moveWaypoint(GameObject player, int idx){
 
         players[playerIndex].GetComponent<Animator>().SetFloat("speed", 1f);
+
+
+        if(player.transform.position.x != waypoints[idx].position.x){
+            player.GetComponent<SpriteRenderer>().flipX = player.transform.position.x > waypoints[idx].position.x;
+        }
+
+
 
 
         Vector3 target = new Vector3(
