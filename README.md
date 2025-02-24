@@ -14,8 +14,8 @@ Unity 2.5D Circus game project
 - [x] game logic with movement (waypoints or pathfinding)
 - [x] pause menu
 - [x] game won screen
-- [ ] movement with animations
-- [ ] all 7 chars
+- [x] movement with animations
+- [x] all 7 chars
 - [ ] menu polishing stuff
 
 ...
