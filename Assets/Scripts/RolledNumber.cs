@@ -18,7 +18,7 @@ public class RolledNumber : MonoBehaviour
     {
         if (diceRoll == null) Debug.LogError("Not found dice roll");
 
-        if (diceRoll.isLanded)
+        if (diceRoll.isRolled)
         {
             rolledNumberText.text = diceRoll.rolledNumberUI;
         }

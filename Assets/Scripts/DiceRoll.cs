@@ -55,7 +55,7 @@ public class DiceRoll : MonoBehaviour
         pos = transform.position;
         transform.rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0);
     }
-
+    public bool isRolled = false;
     public void rollDice()
     {
 
@@ -66,6 +66,8 @@ public class DiceRoll : MonoBehaviour
 
         rb.AddForce(Vector3.up * Random.Range(800, startRollingForce));
         rb.AddTorque(forceX, forceY, forceZ);
+
+        isRolled = true;
 
 
     }

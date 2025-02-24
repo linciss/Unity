@@ -69,7 +69,10 @@ public class GameLoop : MonoBehaviour
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)){
+
+
+
+        if (Input.GetKeyDown(KeyCode.Escape)){
             gamePaused = !gamePaused;
             pauseMenu.SetActive(gamePaused);
         }
